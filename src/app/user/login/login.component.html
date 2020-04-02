@@ -1,0 +1,29 @@
+<mat-card>
+  <img src="/assets/img/logo.png" style="width:50px;height: 50px;" class="loginimg mx-auto d-block">
+  <h3>Sign In</h3>
+  <h6>to continue to CFCL PPIS</h6>
+  <mat-card-content>
+    <form #form='ngForm' class="mb-4 example-form" autocomplete="off" (submit)="onSubmit(form)">
+      <p>
+        <mat-form-field appearance="outline">
+          <mat-label>User Name</mat-label>
+          <input matInput UserName="ngModel" autofocus="ture" name="UserName" [(ngModel)]="formModel.UserName" required>
+          <mat-icon matSuffix>person</mat-icon>
+        </mat-form-field>
+      </p>
+      <p>
+        <mat-form-field appearance="outline">
+          <mat-label>Password</mat-label>
+          <input matInput type="password" #Password="ngModel" name="Password" [(ngModel)]="formModel.Password" required>
+          <mat-icon matSuffix>vpn_key_outline</mat-icon>
+        </mat-form-field>
+      </p>
+      <div class="button">
+        <div class="form-group col-md-8 offset-md-2">
+          <button type="submit" mat-raised-button color="primary" mat-button [disabled]="form.invalid">Login</button>
+        </div>
+      </div>
+
+    </form>
+  </mat-card-content>
+</mat-card>

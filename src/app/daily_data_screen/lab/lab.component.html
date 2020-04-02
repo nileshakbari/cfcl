@@ -1,0 +1,389 @@
+<section class="content">
+  <!-- <div class="container-fluid"> -->
+  <div class="row clearfix">
+    <!-- <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12"></div> -->
+    <!-- <div class="card"> -->
+    <div class="header">
+      <div class="row clearfix">
+        <div class="col-sm-2 pull-left">
+          Transaction Date : 
+        </div>
+        <div class="col-sm-2 pull-left">
+          <div class="form-group">
+            <div class="form-line">
+              <input [(ngModel)]="DBData.TDATE" value="{{now | date:'dd-MM-yyyy'}}" class="form-control"
+                placeholder="Ex: 01-01-2020" #TDATE (focusout)="onBlur(TDATE.value)">
+            </div>
+          </div>
+        </div>
+        <div class="col-xs-12 col-sm-8 pull-right">
+          <button class="headerButton" title="Previous Month" mat-stroked-button (click)="onPreDate()" tabindex="-1">
+            <mat-icon>first_page</mat-icon>
+          </button>
+          <button class="headerButton" title="Previous Day" mat-stroked-button (click)="onPreDate()" tabindex="-1">
+            <mat-icon>keyboard_arrow_left</mat-icon>
+          </button>
+          <button class="headerButton" title="Next Day" mat-stroked-button (click)="onNextDate()" tabindex="-1">
+            <mat-icon>keyboard_arrow_right</mat-icon>
+          </button>
+          <button class="headerButton" title="Next Month" mat-stroked-button (click)="onNextDate()" tabindex="-1">
+            <mat-icon>last_page</mat-icon>
+          </button>
+          <button class="headerButton" title="Data Save" style="color:green;" mat-stroked-button (click)="onSubmit()"
+            tabindex="-1">
+            <mat-icon>save</mat-icon>
+          </button>
+          <button class="headerButton" title="Close" style="color:red;" mat-stroked-button [routerLink]="['/home']"
+            tabindex="-1">
+            <mat-icon>close</mat-icon>
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="body">
+      <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <div class="row clearfix">
+          <div class="col-sm-2">
+            <h5 class="pull-center">Gadepan - I</h5>
+          </div>
+          <div class="col-sm-10">
+            <hr>
+          </div>
+        </div>
+        <div class="row clearfix">
+          <div class="col-sm-2">
+            <div class="form-group">
+              <div class="form-line">
+                <label>N2</label>
+                <input type="number" class="form-control" [(ngModel)]="DBData.GP1_L_N2">
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-2">
+            <div class="form-group">
+              <div class="form-line">
+                <label>CH4</label>
+                <input type="number" class="form-control" [(ngModel)]="DBData.GP1_L_CH4">
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-2">
+            <div class="form-group">
+              <div class="form-line">
+                <label>C2H6</label>
+                <input type="number" class="form-control" [(ngModel)]="DBData.GP1_L_C2H6">
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-2">
+            <div class="form-group">
+              <div class="form-line">
+                <label>CO2</label>
+                <input type="number" class="form-control" [(ngModel)]="DBData.GP1_L_CO2">
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-2">
+            <div class="form-group">
+              <div class="form-line">
+                <label>C3H8</label>
+                <input type="number" class="form-control" [(ngModel)]="DBData.GP1_L_C3H8">
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-2">
+            <div class="form-group">
+              <div class="form-line">
+                <label>NC4H10</label>
+                <input type="number" class="form-control" [(ngModel)]="DBData.GP1_L_NC4H10">
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-2">
+            <div class="form-group">
+              <div class="form-line">
+                <label>IC4H10</label>
+                <input type="number" class="form-control" [(ngModel)]="DBData.GP1_L_IC4H10">
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-2">
+            <div class="form-group">
+              <div class="form-line">
+                <label>MOLECULAR</label>
+                <input type="number" class="form-control" [(ngModel)]="DBData.GP1_L_MOL_WT">
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-2">
+            <div class="form-group">
+              <div class="form-line">
+                <label>NET_CV</label>
+                <input type="number" class="form-control" [(ngModel)]="DBData.GP1_L_NG_NET_CV">
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-2">
+            <div class="form-group">
+              <div class="form-line">
+                <label>GROSS_CV</label>
+                <input type="number" class="form-control" [(ngModel)]="DBData.GP1_L_NG_GROSS_CV">
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-2">
+            <div class="form-group">
+              <div class="form-line">
+                <label>ZNO_BED</label>
+                <input type="number" class="form-control" [(ngModel)]="DBData.GP1_L_ZNO_BED">
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-2">
+            <div class="form-group">
+              <div class="form-line">
+                <label>H2S</label>
+                <input type="number" class="form-control" [(ngModel)]="DBData.GP1_L_H2S">
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row clearfix">
+          <div class="col-sm-2">
+            <h5 class="pull-center">Gadepan - II</h5>
+          </div>
+          <div class="col-sm-10">
+            <hr>
+          </div>
+        </div>
+        <div class="row clearfix">
+          <div class="col-sm-2">
+            <div class="form-group">
+              <div class="form-line">
+                <label>N2</label>
+                <input type="number" class="form-control" [(ngModel)]="DBData.N2">
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-2">
+            <div class="form-group">
+              <div class="form-line">
+                <label>CH4</label>
+                <input type="number" class="form-control" [(ngModel)]="DBData.CH4">
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-2">
+            <div class="form-group">
+              <div class="form-line">
+                <label>C2H6</label>
+                <input type="number" class="form-control" [(ngModel)]="DBData.C2H6">
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-2">
+            <div class="form-group">
+              <div class="form-line">
+                <label>CO2</label>
+                <input type="number" class="form-control" [(ngModel)]="DBData.CO2">
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-2">
+            <div class="form-group">
+              <div class="form-line">
+                <label>C3H8</label>
+                <input type="number" class="form-control" [(ngModel)]="DBData.C3H8">
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-2">
+            <div class="form-group">
+              <div class="form-line">
+                <label>NC4H10</label>
+                <input type="number" class="form-control" [(ngModel)]="DBData.NC4H10">
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-2">
+            <div class="form-group">
+              <div class="form-line">
+                <label>IC4H10</label>
+                <input type="number" class="form-control" [(ngModel)]="DBData.IC4H10">
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-2">
+            <div class="form-group">
+              <div class="form-line">
+                <label>MOLECULAR</label>
+                <input type="number" class="form-control" [(ngModel)]="DBData.MOLECULAR">
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-2">
+            <div class="form-group">
+              <div class="form-line">
+                <label>NET_CV</label>
+                <input type="number" class="form-control" [(ngModel)]="DBData.NET_CV">
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-2">
+            <div class="form-group">
+              <div class="form-line">
+                <label>GROSS_CV</label>
+                <input type="number" class="form-control" [(ngModel)]="DBData.GROSS_CV">
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-2">
+            <div class="form-group">
+              <div class="form-line">
+                <label>ZNO_BED</label>
+                <input type="number" class="form-control" [(ngModel)]="DBData.ZNO_BED">
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-2">
+            <div class="form-group">
+              <div class="form-line">
+                <label>H2S</label>
+                <input type="number" class="form-control" [(ngModel)]="DBData.H2S">
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row clearfix">
+          <div class="col-sm-2">
+            <h5 class="pull-center">Gadepan - III</h5>
+          </div>
+          <div class="col-sm-10">
+            <hr>
+          </div>
+        </div>
+        <div class="row clearfix">
+          <div class="col-sm-2">
+            <div class="form-group">
+              <div class="form-line">
+                <label>N2</label>
+                <input type="number" class="form-control" [(ngModel)]="DBData.N2">
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-2">
+            <div class="form-group">
+              <div class="form-line">
+                <label>CH4</label>
+                <input type="number" class="form-control" [(ngModel)]="DBData.CH4">
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-2">
+            <div class="form-group">
+              <div class="form-line">
+                <label>C2H6</label>
+                <input type="number" class="form-control" [(ngModel)]="DBData.C2H6">
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-2">
+            <div class="form-group">
+              <div class="form-line">
+                <label>CO2</label>
+                <input type="number" class="form-control" [(ngModel)]="DBData.CO2">
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-2">
+            <div class="form-group">
+              <div class="form-line">
+                <label>C3H8</label>
+                <input type="number" class="form-control" [(ngModel)]="DBData.C3H8">
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-2">
+            <div class="form-group">
+              <div class="form-line">
+                <label>NC4H10</label>
+                <input type="number" class="form-control" [(ngModel)]="DBData.NC4H10">
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-2">
+            <div class="form-group">
+              <div class="form-line">
+                <label>IC4H10</label>
+                <input type="number" class="form-control" [(ngModel)]="DBData.IC4H10">
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-2">
+            <div class="form-group">
+              <div class="form-line">
+                <label>MOLECULAR</label>
+                <input type="number" class="form-control" [(ngModel)]="DBData.MOLECULAR">
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-2">
+            <div class="form-group">
+              <div class="form-line">
+                <label>NET_CV</label>
+                <input type="number" class="form-control" [(ngModel)]="DBData.NET_CV">
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-2">
+            <div class="form-group">
+              <div class="form-line">
+                <label>GROSS_CV</label>
+                <input type="number" class="form-control" [(ngModel)]="DBData.GROSS_CV">
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-2">
+            <div class="form-group">
+              <div class="form-line">
+                <label>ZNO_BED</label>
+                <input type="number" class="form-control" [(ngModel)]="DBData.ZNO_BED">
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-2">
+            <div class="form-group">
+              <div class="form-line">
+                <label>H2S</label>
+                <input type="number" class="form-control" [(ngModel)]="DBData.H2S">
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- </div> -->
+      </div>
+    </div>
+    <!-- </div> -->
+
+  </div>
+</section>
+<footer class="footer">
+  <div class="col-sm-2 col-xs-6">
+    <h6 *ngIf="userDetails">{{userDetails.UserName}}</h6>
+  </div>
+  <div class="col-sm-2 col-xs-6">
+    <h6>Last modified UserName</h6>
+  </div>
+  <div class="col-sm-2 col-xs-6">
+    <h6>Last modified Date</h6>
+  </div>
+  <div class="col-sm-2 col-xs-6">
+    <h6>Previous Day Value</h6>
+  </div>
+  <div class="col-sm-2 col-xs-6">
+    <h6>{{PageTitle}}</h6>
+  </div>
+  <div class="col-sm-2 col-xs-6">
+    <h6>{{now | date:'dd-MM-yyyy hh:mm:ss a'}}</h6>
+  </div>
+</footer>
