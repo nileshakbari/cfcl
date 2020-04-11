@@ -1,31 +1,28 @@
 import { Component, OnInit } from '@angular/core';
-import { UserService } from '../shared/services/user.service';
+import { UserService } from '../../shared/services/user.service';
 import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
-  styles: []
+  styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent implements OnInit {
   userDetails: any;
-
   constructor(private router: Router, private service: UserService) { }
 
   ngOnInit() {
-    this.service.getUserProfile().subscribe(
-      res => {
-        this.userDetails = res;
+    this.service.getUserProfile().subscribe(response => {
+        this.userDetails = response;
+      }, error => {
+        console.log(error);
       },
-      err => {
-        console.log(err);
-      }
     );
   }
 
   onLogout() {
-    localStorage.removeItem('token');
+    sessionStorage.removeItem('token');
+    sessionStorage.clear();
     this.router.navigate(['/login']);
   }
-
 }

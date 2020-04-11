@@ -1,25 +1,10 @@
-import { UserService } from '../shared/services/user.service';
-import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styles: []
 })
-export class HomeComponent implements OnInit {
-  userDetails;
-
-  constructor(private router: Router, private service: UserService) { }
-
-  ngOnInit() {
-    this.service.getUserProfile().subscribe(
-      res => {
-        this.userDetails = res;
-      },
-      err => {
-        console.log(err);
-      },
-    );
-  }
+export class HomeComponent {
+  constructor() { }
 }

@@ -1,0 +1,30 @@
+  body {
+    margin: 0px;
+    background-image: url('./../../../assets/img/cfcl.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+  .mat-form-field {
+    min-width: 100px !important;
+    text-align: left !important;
+  }
+  .mat-card {
+    max-width: 25%;
+  }
+
+@media (min-width: 300px) and (max-width: 767px) {
+  .mat-card {
+    max-width: 95%;
+  }
+}
+@media (min-width: 768px) and (max-width: 991px){
+  .mat-card {
+    max-width: 40%;
+  }
+}
+
+@media (min-width: 1000px) and (max-width: 1100px){
+  .mat-card {
+    max-width: 45%;
+  }
+}

@@ -1,0 +1,44 @@
+<section class="content">
+  <div class="container-fluid">
+    <div class="header">
+      <div class="col-sm-8 col-xs-12 pull-left">
+        <div class="export-container pull-left">
+          <button mat-stroked-button color="success" title="Export to Excel" (click)="generateExcel()"
+            style="color:green;"><b>Excel</b></button> &nbsp;
+          <button mat-stroked-button color="danger" title="Export to Pdf" (click)="generatePdf()"
+            style="color:red;"><b>Pdf</b></button>
+        </div>
+      </div>
+      <div class="col-sm-4 col-xs-12 pull-right">
+        <!-- <mat-form-field>
+          <mat-label>Filter</mat-label>
+          <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Mia">
+        </mat-form-field> -->
+      </div>
+    </div>
+    <div class="body">
+
+      <table id="ExportData" class="table">
+        <tr>
+          <td colspan="6" style="text-align:center;"><h1><img src="/assets/img/logo.png" style="width:50px;height: 50px;" class="loginimg mx-auto d-block">CFCL</h1></td>
+        </tr>
+        <tr>
+          <th>Tdate</th>
+          <th>A3_AUPA_T1_CV</th>
+          <th>A3_AUPA_T10_CV</th>
+          <th>A3_AUPA_T11_CV</th>
+          <th>A3_AUPA_T12</th>
+          <th>A3_AUPA_T13</th>
+        </tr>
+        <tr *ngFor="let row of DBData">
+          <td [innerHTML]="row.TDATE"></td>
+          <td [innerHTML]="row.A3_AUPA_T1_CV"></td>
+          <td [innerHTML]="row.A3_AUPA_T10_CV"></td>
+          <td [innerHTML]="row.A3_AUPA_T11_CV"></td>
+          <td [innerHTML]="row.A3_AUPA_T12"></td>
+          <td [innerHTML]="row.A3_AUPA_T13"></td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</section>

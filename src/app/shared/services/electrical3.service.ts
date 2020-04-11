@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Electrical3 } from '../models/electrical3';
-import { Observable} from 'rxjs';
+import { Observable, of} from 'rxjs';
 import { environment } from 'src/environments/environment';
+import { map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -20,6 +21,7 @@ export class Electrical3Service {
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   };
+  DBData: any;
 
   /*
   * Initializes objects of a class
@@ -40,14 +42,24 @@ export class Electrical3Service {
   /*
   * GET Electrical3 Single Record by Transaction Date (TDATE). Will throw exception 404(Record Not Found) when TDATE not found
   */
-  getData(TDATE): Observable<Electrical3> {
-    return this.http.get<Electrical3>(`${this.APILINK}/${TDATE}`);
+  // getData(TDATE): Observable<Electrical3> {
+  //   return this.http.get<Electrical3>(`${this.APILINK}/${TDATE}`);
+  // }
+  getData(TDATE) {
+    if (this.DBData) {
+      return of(this.DBData);
+    } else {
+    return this.http.get(`${this.APILINK}/${TDATE}`)
+      .pipe(map((response) => {
+        this.DBData = response;
+      }));
+    }
   }
 
   /*
   * POST: Save or Update Record
   */
-  saveData(Data: Electrical3): Observable<Electrical3> {
-    return this.http.post<Electrical3>(this.APILINK, Data, this.httpOptions);
-  }
+  // saveData(Data: Electrical3): Observable<Electrical3> {
+  //   return this.http.post<Electrical3>(this.APILINK, Data, this.httpOptions);
+  // }
 }

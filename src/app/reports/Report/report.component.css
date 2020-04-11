@@ -1,0 +1,12 @@
+
+  table {
+    width: 100%;
+    padding: 1%;
+    border: 1px solid thistle;
+  }
+  
+  td, th {
+    width: 10%;
+    font-size: 16px;
+    border: 1px solid thistle;
+  }

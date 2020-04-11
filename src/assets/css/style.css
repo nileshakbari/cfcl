@@ -2326,7 +2326,7 @@
     margin-bottom: -6px;
     width: calc(100% + 30px); }
   .navbar .nav > li {
-    display: inline-block; }
+  display: inline-block; }
   .navbar .navbar-nav {
     margin-top: -10px;
     margin-bottom: 1px;
@@ -7464,8 +7464,8 @@ fieldset[disabled] .form-control {
   font-family: "Roboto", sans-serif;
   background: #fdfdfd;
   width: 300px;
-  overflow: hidden;
-  display: inline-block;
+  /* overflow: hidden; */
+  /* display: inline-block; */
   height: calc(100vh - 70px);
   position: fixed;
   top: 70px;

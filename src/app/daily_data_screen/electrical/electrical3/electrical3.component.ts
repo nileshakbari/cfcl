@@ -1,13 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Electrical3Service } from '../../../shared/services/electrical3.service';
 import { Electrical3 } from '../../../shared/models/electrical3';
-import { UserService } from 'src/app/shared/services/user.service';
 
 @Component({
   selector: 'app-electrical3',
   templateUrl: './electrical3.component.html',
+  styleUrls: ['./electrical3.component.css']
 })
-export class Electrical3Component implements OnInit {
+export class Electrical3Component {
 
   /*
   * Initializes variable of a class
@@ -20,21 +20,10 @@ export class Electrical3Component implements OnInit {
   * Initializes objects of a class
   */
   constructor(
-    private service: Electrical3Service, private userservice: UserService
+    private service: Electrical3Service
   ) { setInterval(() => {
     this.now = new Date();
   }, 1); }
-
-  ngOnInit(): void {
-    this.userservice.getUserProfile().subscribe(
-      res => {
-        this.userDetails = res;
-      },
-      err => {
-        console.log(err);
-      }
-    );
-  }
 
   onPreDate() {
     const dte = new Date();
@@ -50,24 +39,22 @@ export class Electrical3Component implements OnInit {
   * Get Data From DB File Data in Reactive Form Fileds
   */
   onBlur(TDATE: any) {
-    this.service.getData(TDATE)
-      .subscribe((result: any) => {
-        this.DBData = result;
-        console.log('Data Get...');
-      }, (err: any) => {
-        console.log(err);
-      });
+    this.service.getData(TDATE).subscribe(response => {
+      this.DBData = response;
+    }, error => {
+      console.error(error);
+    });
   }
 
   /*
   * Data Save and Update by Service File
   */
-  onSubmit() {
-    this.service.saveData(this.DBData)
-      .subscribe((res: any) => {
-        console.log('Data Saved Successfully...');
-      }, (err: any) => {
-        console.log(err);
-      });
-  }
+  // onSubmit() {
+  //   this.service.saveData(this.DBData)
+  //     .subscribe((res: any) => {
+  //       console.log('Data Saved Successfully...');
+  //     }, (err: any) => {
+  //       console.log(err);
+  //     });
+  // }
 }

@@ -7,25 +7,24 @@ import { Router } from '@angular/router';
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
 
-    constructor(private router: Router) {
-
-    }
+    constructor(private router: Router) { }
 
     intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-        if (localStorage.getItem('token') != null) {
+        if (sessionStorage.getItem('token') != null) {
             const clonedReq = req.clone({
-                headers: req.headers.set('Authorization', 'Bearer ' + localStorage.getItem('token'))
+                headers: req.headers.set('Authorization', 'Bearer ' + sessionStorage.getItem('token'))
             });
             return next.handle(clonedReq).pipe(
                 tap(
                     succ => { },
-                    err => {
+                    error => {
                         // tslint:disable-next-line: triple-equals
-                        if (err.status == 401) {
-                            localStorage.removeItem('token');
+                        if (error.status == 401) {
+                            sessionStorage.removeItem('token');
+                            sessionStorage.clear();
                             this.router.navigateByUrl('/login');
                         // tslint:disable-next-line: triple-equals
-                        } else if (err.status == 403) {
+                        } else if (error.status == 403) {
                             this.router.navigateByUrl('/forbidden');
                         }
                     }

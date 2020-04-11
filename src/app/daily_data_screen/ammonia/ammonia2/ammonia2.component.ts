@@ -25,24 +25,22 @@ export class Ammonia2Component {
   * Get Data From DB File Data in Reactive Form Fileds
   */
   onBlur(TDATE: any) {
-    this.service.getData(TDATE)
-      .subscribe((result: any) => {
-        this.DBData = result;
-        console.log('Data Get...');
-      }, (err: any) => {
-        console.log(err);
-      });
+    this.service.getData(TDATE).subscribe(response => {
+      this.DBData = response;
+    }, error => {
+      console.error(error);
+    });
   }
 
   /*
   * Data Save and Update by Service File
   */
-  onSubmit() {
-    this.service.saveData(this.DBData)
-      .subscribe((res: any) => {
-        console.log('Data Saved Successfully...');
-      }, (err: any) => {
-        console.log(err);
-      });
-  }
+  // onSubmit() {
+  //   this.service.saveData(this.DBData)
+  //     .subscribe((res: any) => {
+  //       console.log('Data Saved Successfully...');
+  //     }, (err: any) => {
+  //       console.log(err);
+  //     });
+  // }
 }

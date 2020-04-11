@@ -1,376 +1,356 @@
 <section class="content">
     <div class="container-fluid">
-        <div class="block-header">
-            <h2>{{PageTitle}}</h2>
-        </div>
-
-        <div class="row clearfix">
-            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                <div class="card">
-                    <div class="header">
-                        <div class="col-sm-6">
-                            <div class="input-group">
-                                <span class="input-group-addon">
-                                    Transaction Date : <i class="material-icons">date_range</i>
-                                </span>
-                                <div class="form-line">
-                                    <input [(ngModel)]="DBData.TDATE" class="form-control" placeholder="Ex: 01-01-2020"
-                                        #TDATE (focusout)="onBlur(TDATE.value)">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="float-right">
-                            <button type="submit" class="btn btn-primary" (click)="onSubmit()">
-                                <mat-icon>save</mat-icon>
-                            </button>
-                        </div>
-                    </div>
-                    <div class="body">
-                        <mat-tab-group>
-                            <mat-tab label="Main Condition">
-                                <br>
-                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 set-div-center">
-                                    <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10">
-                                        <div class="row">
-                                            <div class="col-sm-3">Condition Type</div>
-                                            <div class="col-sm-3">
-                                                <div class="form-group">
-                                                    <select class="form-control" [(ngModel)]="DBData.E_COND_TYPE" aria-placeholder="E_COND_TYPE">
-                                                        <option value="">option 1</option>
-                                                        <option value="">option 2</option>
-                                                        <option value="">option 3</option>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-sm-3">Condition</div>
-                                            <div class="col-sm-9">
-                                                <div class="form-group">
-                                                   <input type="text" class="form-control" [(ngModel)]="DBData.E_COND" placeholder="E_COND"> 
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </mat-tab>
-                            <mat-tab label="Offsite Sub Condition">
-                                <br>
-                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 set-div-center">
-                                    <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10">
-                                        <div class="row">
-                                            <div class="col-sm-3">OffsiteCondition</div>
-                                            <div class="col-sm-9">
-                                                <div class="form-group">
-                                                    <input type="text" list="DSP-E-COND-list" class="form-control" [(ngModel)]="DBData.DSP_E_COND" placeholder="DSP_E_COND">
-                                                    <datalist id="DSP-E-COND-list">
-                                                        <option value="value 1"></option>
-                                                        <option value="value 2"></option>
-                                                        <option value="value 3"></option>
-                                                    </datalist>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-sm-3">Sub ConditionDescription</div>
-                                            <div class="col-sm-9">
-                                                <div class="form-group">
-                                                   <input type="text" class="form-control" [(ngModel)]="DBData.E_SUB_COND_DESC" placeholder="E_SUB_COND_DESC">
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-sm-3">Ammonia CoolingTower(%)</div>
-                                            <div class="col-sm-4">
-                                                <div class="form-group">
-                                                   <input type="number" class="form-control" [(ngModel)]="DBData.E_ACT_PERCENT" placeholder="E_ACT_PERCENT">
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-sm-3">Urea CoolingTower(%)</div>
-                                            <div class="col-sm-4">
-                                                <div class="form-group">
-                                                   <input type="number" class="form-control" [(ngModel)]="DBData.E_UCT_PERCENT" placeholder="E_UCT_PERCENT">
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-sm-3">Water Pre-TreatmentPlant(%)</div>
-                                            <div class="col-sm-4">
-                                                <div class="form-group">
-                                                   <input type="number" class="form-control" [(ngModel)]="DBData.E_WPT_PERCENT" placeholder="E_WPT_PERCENT">
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-sm-3">De-MineralizedPlant(%)</div>
-                                            <div class="col-sm-4">
-                                                <div class="form-group">
-                                                   <input type="number" class="form-control" [(ngModel)]="DBData.E_DM_PERCENT" placeholder="E_DM_PERCENT">
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-sm-3">Instrument AirCompressor(%)</div>
-                                            <div class="col-sm-4">
-                                                <div class="form-group">
-                                                   <input type="number" class="form-control" [(ngModel)]="DBData.E_IAC_PERCENT" placeholder="E_IAC_PERCENT">
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-sm-3">EffluentTreatment Plant(%)</div>
-                                            <div class="col-sm-4">
-                                                <div class="form-group">
-                                                   <input type="number" class="form-control" [(ngModel)]="DBData.E_ETP_PERCENT" placeholder="E_ETP_PERCENT">
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-sm-3">FireStation(%)</div>
-                                            <div class="col-sm-4">
-                                                <div class="form-group readonly">
-                                                   <input type="number" class="form-control" [(ngModel)]="DBData.E_FS_PERCENT" placeholder="E_FS_PERCENT" readonly  tabindex="-1">
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </mat-tab>
-                            <mat-tab label="3MVA Sub Condition">
-                                <br>
-                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 set-div-center">
-                                    <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10">
-                                        <div class="row">
-                                            <div class="col-sm-4">3MVA Condition</div>
-                                            <div class="col-sm-8">
-                                                <div class="form-group">
-                                                    <input type="text" list="DSP_E_COND_3MVA-list" class="form-control" [(ngModel)]="DBData.DSP_E_COND_3MVA" placeholder="DSP_E_COND_3MVA">
-                                                    <datalist id="DSP_E_COND_3MVA-list">
-                                                        <option value="value 1"></option>
-                                                        <option value="value 2"></option>
-                                                        <option value="value 3"></option>
-                                                    </datalist>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-sm-4">Sub Condition Description</div>
-                                            <div class="col-sm-8">
-                                                <div class="form-group">
-                                                   <input type="text" class="form-control" [(ngModel)]="DBData.E_SUB_COND_DESC" placeholder="E_SUB_COND_DESC">
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-sm-4">Ammonia Cooling Tower Percent(%)</div>
-                                            <div class="col-sm-4">
-                                                <div class="form-group">
-                                                   <input type="number" class="form-control" [(ngModel)]="DBData.E_ACT_PERCENT" placeholder="E_ACT_PERCENT">
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-sm-4">Urea CoolingTower(%)</div>
-                                            <div class="col-sm-4">
-                                                <div class="form-group">
-                                                   <input type="number" class="form-control" [(ngModel)]="DBData.E_UCT_PERCENT" placeholder="E_UCT_PERCENT">
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-sm-4">Water Pre-TreatmentPlant(%)</div>
-                                            <div class="col-sm-4">
-                                                <div class="form-group">
-                                                   <input type="number" class="form-control" [(ngModel)]="DBData.E_WPT_PERCENT" placeholder="E_WPT_PERCENT">
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-sm-4">De-MineralizedPlant(%)</div>
-                                            <div class="col-sm-4">
-                                                <div class="form-group">
-                                                   <input type="number" class="form-control" [(ngModel)]="DBData.E_DM_PERCENT" placeholder="E_DM_PERCENT">
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-sm-4">EffluentTreatment Plant(%)</div>
-                                            <div class="col-sm-4">
-                                                <div class="form-group">
-                                                   <input type="number" class="form-control" [(ngModel)]="DBData.E_ETP_PERCENT" placeholder="E_ETP_PERCENT">
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-sm-4">Instrument AirCompressor(%)</div>
-                                            <div class="col-sm-4">
-                                                <div class="form-group readonly">
-                                                   <input type="number" class="form-control" [(ngModel)]="DBData.E_IAC_PERCENT" placeholder="E_IAC_PERCENT" readonly tabindex="-1">
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </mat-tab>
-                            <mat-tab label="SPG Sub Condition">
-                                <br>
-                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 set-div-center">
-                                    <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10">
-                                        <div class="row">
-                                            <div class="col-sm-4">SPG Main Condition</div>
-                                            <div class="col-sm-8">
-                                                <div class="form-group">
-                                                    <input type="text" list="DSP_E_CONDsmc-list" class="form-control" [(ngModel)]="DBData.DSP_E_COND" placeholder="DSP_E_COND">
-                                                    <datalist id="DDSP_E_CONDsmc-list">
-                                                        <option value="value 1"></option>
-                                                        <option value="value 2"></option>
-                                                        <option value="value 3"></option>
-                                                    </datalist>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-sm-4">SPG Sub Condition Description</div>
-                                            <div class="col-sm-8">
-                                                <div class="form-group">
-                                                   <input type="text" class="form-control" [(ngModel)]="DBData.E_SUB_COND_DESC" placeholder="E_SUB_COND_DESC">
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-sm-4">Captive Power Plant(%)</div>
-                                            <div class="col-sm-4">
-                                                <div class="form-group">
-                                                   <input type="number" class="form-control" [(ngModel)]="DBData.E_CPP_PERCENT" placeholder="E_CPP_PERCENT">
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-sm-4">Instrument Air Compressor(%)</div>
-                                            <div class="col-sm-4">
-                                                <div class="form-group">
-                                                   <input type="number" class="form-control" [(ngModel)]="DBData.E_IAC_PERCENT" placeholder="E_IAC_PERCENT">
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-sm-4">Auxillary Boiler(%)</div>
-                                            <div class="col-sm-4">
-                                                <div class="form-group  readonly">
-                                                   <input type="number" class="form-control" [(ngModel)]="DBData.E_AB_PERCENT" placeholder="E_AB_PERCENT" readonly tabindex="-1">
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </mat-tab>
-                            <mat-tab label="Communicaton">
-                                <br>
-                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 set-div-center">
-                                    <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10">
-                                        <div class="row">
-                                            <div class="col-sm-4">Communicaton  Name</div>
-                                            <div class="col-sm-4">
-                                                <div class="form-group">
-                                                    <input type="text" class="form-control" [(ngModel)]="DBData.E_COMM_NAME" placeholder="E_COMM_NAME">
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-sm-4">Description</div>
-                                            <div class="col-sm-8">
-                                                <div class="form-group">
-                                                   <input type="text" class="form-control" [(ngModel)]="DBData.E_COMM_REMARK" placeholder="E_COMM_REMARK">
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-sm-4">Status</div>
-                                            <div class="col-sm-4">
-                                                <div class="form-group">
-                                                   <select id="E_STATUScmm-list" class="form-control" [(ngModel)]="DBData.E_STATUS">
-                                                       <option value="">value 1</option>
-                                                       <option value="">value 2</option>
-                                                       <option value="">value 3</option>
-                                                   </select>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </mat-tab>
-                        </mat-tab-group>
+        <div class="header">
+            <div class="col-sm-2 col-xs-6">
+                <div class="form-group pull-right">
+                    Transaction&nbsp;Date:
+                </div>
+            </div>
+            <div class="col-sm-1 col-xs-6 pull-left">
+                <div class="form-group pull-left">
+                    <div class="form-line">
+                        <input [(ngModel)]="DBData.TDATE" value="{{now | date:'dd-MM-yyyy'}}" class="form-control"
+                            placeholder="Ex: 01-01-2020" #TDATE (focusout)="onBlur(TDATE.value)">
                     </div>
                 </div>
             </div>
+            <div class="col-sm-9 col-xs-12 pull-right" style="margin-bottom: 5px;">
+                <button class="headerButton" title="Previous Month" mat-stroked-button tabindex="-1">
+                    <mat-icon>first_page</mat-icon>
+                </button>
+                <button class="headerButton" title="Previous Day" mat-stroked-button tabindex="-1">
+                    <mat-icon>keyboard_arrow_left</mat-icon>
+                </button>
+                <button class="headerButton" title="Next Day" mat-stroked-button tabindex="-1">
+                    <mat-icon>keyboard_arrow_right</mat-icon>
+                </button>
+                <button class="headerButton" title="Next Month" mat-stroked-button tabindex="-1">
+                    <mat-icon>last_page</mat-icon>
+                </button>
+                <button class="headerButton" title="Data Save" style="color:green;" mat-stroked-button tabindex="-1">
+                    <mat-icon>save</mat-icon>
+                </button>
+                <button class="headerButton" title="Close" style="color:red;" mat-stroked-button
+                    [routerLink]="['/home']" tabindex="-1">
+                    <mat-icon>close</mat-icon>
+                </button>
+            </div>
+        </div>
+        <div class="body">
+            <mat-tab-group>
+                <mat-tab label="Main Condition">
+                    <br>
+                    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                        <div class="row clearfix">
+                            <div class="col-sm-6">Condition Type</div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <div class="form-line">
+                                        <select class="form-control" [(ngModel)]="DBData.E_COND_TYPE"
+                                            aria-placeholder="E_COND_TYPE">
+                                            <option value="">option 1</option>
+                                            <option value="">option 2</option>
+                                            <option value="">option 3</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6">Condition</div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <input type="number" class="form-control" [(ngModel)]="DBData.E_COND"
+                                        placeholder="E_COND">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </mat-tab>
+                <mat-tab label="Offsite Sub Condition">
+                    <br>
+                    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                        <div class="row clearfix">
+                            <div class="col-sm-6">OffsiteCondition</div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <input type="number" list="DSP-E-COND-list" class="form-control"
+                                        [(ngModel)]="DBData.DSP_E_COND" placeholder="DSP_E_COND">
+                                    <datalist id="DSP-E-COND-list">
+                                        <option value="value 1"></option>
+                                        <option value="value 2"></option>
+                                        <option value="value 3"></option>
+                                    </datalist>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6">Sub ConditionDescription</div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <input type="number" class="form-control" [(ngModel)]="DBData.E_SUB_COND_DESC"
+                                        placeholder="E_SUB_COND_DESC">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6">Ammonia CoolingTower(%)</div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <input type="number" class="form-control" [(ngModel)]="DBData.E_ACT_PERCENT"
+                                        placeholder="E_ACT_PERCENT">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6">Urea CoolingTower(%)</div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <input type="number" class="form-control" [(ngModel)]="DBData.E_UCT_PERCENT"
+                                        placeholder="E_UCT_PERCENT">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6">Water Pre-TreatmentPlant(%)</div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <input type="number" class="form-control" [(ngModel)]="DBData.E_WPT_PERCENT"
+                                        placeholder="E_WPT_PERCENT">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6">De-MineralizedPlant(%)</div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <input type="number" class="form-control" [(ngModel)]="DBData.E_DM_PERCENT"
+                                        placeholder="E_DM_PERCENT">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6">Instrument AirCompressor(%)</div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <input type="number" class="form-control" [(ngModel)]="DBData.E_IAC_PERCENT"
+                                        placeholder="E_IAC_PERCENT">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6">EffluentTreatment Plant(%)</div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <input type="number" class="form-control" [(ngModel)]="DBData.E_ETP_PERCENT"
+                                        placeholder="E_ETP_PERCENT">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6">FireStation(%)</div>
+                            <div class="col-sm-6">
+                                <div class="form-group readonly">
+                                    <input type="number" class="form-control" [(ngModel)]="DBData.E_FS_PERCENT"
+                                        placeholder="E_FS_PERCENT" readonly tabindex="-1">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </mat-tab>
+                <mat-tab label="3MVA Sub Condition">
+                    <br>
+                    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                        <div class="row clearfix">
+                            <div class="col-sm-6">3MVA Condition</div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <input type="number" list="DSP_E_COND_3MVA-list" class="form-control"
+                                        [(ngModel)]="DBData.DSP_E_COND_3MVA" placeholder="DSP_E_COND_3MVA">
+                                    <datalist id="DSP_E_COND_3MVA-list">
+                                        <option value="value 1"></option>
+                                        <option value="value 2"></option>
+                                        <option value="value 3"></option>
+                                    </datalist>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6">Sub Condition Description</div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <input type="number" class="form-control" [(ngModel)]="DBData.E_SUB_COND_DESC"
+                                        placeholder="E_SUB_COND_DESC">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6">Ammonia Cooling Tower Percent(%)</div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <input type="number" class="form-control" [(ngModel)]="DBData.E_ACT_PERCENT"
+                                        placeholder="E_ACT_PERCENT">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6">Urea CoolingTower(%)</div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <input type="number" class="form-control" [(ngModel)]="DBData.E_UCT_PERCENT"
+                                        placeholder="E_UCT_PERCENT">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6">Water Pre-TreatmentPlant(%)</div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <input type="number" class="form-control" [(ngModel)]="DBData.E_WPT_PERCENT"
+                                        placeholder="E_WPT_PERCENT">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6">De-MineralizedPlant(%)</div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <input type="number" class="form-control" [(ngModel)]="DBData.E_DM_PERCENT"
+                                        placeholder="E_DM_PERCENT">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6">EffluentTreatment Plant(%)</div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <input type="number" class="form-control" [(ngModel)]="DBData.E_ETP_PERCENT"
+                                        placeholder="E_ETP_PERCENT">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6">Instrument AirCompressor(%)</div>
+                            <div class="col-sm-6">
+                                <div class="form-group readonly">
+                                    <input type="number" class="form-control" [(ngModel)]="DBData.E_IAC_PERCENT"
+                                        placeholder="E_IAC_PERCENT" readonly tabindex="-1">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </mat-tab>
+                <mat-tab label="SPG Sub Condition">
+                    <br>
+                    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                        <div class="row clearfix">
+                            <div class="col-sm-6">SPG Main Condition</div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <input type="number" list="DSP_E_CONDsmc-list" class="form-control"
+                                        [(ngModel)]="DBData.DSP_E_COND" placeholder="DSP_E_COND">
+                                    <datalist id="DDSP_E_CONDsmc-list">
+                                        <option value="value 1"></option>
+                                        <option value="value 2"></option>
+                                        <option value="value 3"></option>
+                                    </datalist>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6">SPG Sub Condition Description</div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <input type="number" class="form-control" [(ngModel)]="DBData.E_SUB_COND_DESC"
+                                        placeholder="E_SUB_COND_DESC">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6">Captive Power Plant(%)</div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <input type="number" class="form-control" [(ngModel)]="DBData.E_CPP_PERCENT"
+                                        placeholder="E_CPP_PERCENT">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6">Instrument Air Compressor(%)</div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <input type="number" class="form-control" [(ngModel)]="DBData.E_IAC_PERCENT"
+                                        placeholder="E_IAC_PERCENT">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6">Auxillary Boiler(%)</div>
+                            <div class="col-sm-6">
+                                <div class="form-group  readonly">
+                                    <input type="number" class="form-control" [(ngModel)]="DBData.E_AB_PERCENT"
+                                        placeholder="E_AB_PERCENT" readonly tabindex="-1">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </mat-tab>
+                <mat-tab label="Communicaton">
+                    <br>
+                    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                        <div class="row clearfix">
+                            <div class="col-sm-6">Communicaton Name</div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <input type="number" class="form-control" [(ngModel)]="DBData.E_COMM_NAME"
+                                        placeholder="E_COMM_NAME">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6">Description</div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <input type="number" class="form-control" [(ngModel)]="DBData.E_COMM_REMARK"
+                                        placeholder="E_COMM_REMARK">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6">Status</div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <select id="E_STATUScmm-list" class="form-control" [(ngModel)]="DBData.E_STATUS">
+                                        <option value="">value 1</option>
+                                        <option value="">value 2</option>
+                                        <option value="">value 3</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </mat-tab>
+            </mat-tab-group>
         </div>
     </div>
+    <footer class="footer">
+        <div class="col-sm-2 col-xs-6">
+            <h6 *ngIf="userDetails">{{userDetails.UserName}}</h6>
+        </div>
+        <div class="col-sm-2 col-xs-6">
+            <h6>Last modified UserName</h6>
+        </div>
+        <div class="col-sm-2 col-xs-6">
+            <h6>Last modified Date</h6>
+        </div>
+        <div class="col-sm-2 col-xs-6">
+            <h6>Previous Day Value</h6>
+        </div>
+        <div class="col-sm-2 col-xs-6">
+            <h6>{{PageTitle}}</h6>
+        </div>
+        <div class="col-sm-2 col-xs-6">
+            <h6>{{now | date:'dd-MM-yyyy hh:mm:ss a'}}</h6>
+        </div>
+    </footer>
 </section>
-
-<!-- <section class="content">
-    <div class="container-fluid">
-        <div class="jumbotron">
-            <h3>LAB </h3>
-
-            
-            <mat-label>Date : </mat-label>
-
-            <mat-divider></mat-divider>
-            <fieldset>
-                <legend>Choose your favorite monster</legend>
-                <mat-accordion>
-                    <mat-expansion-panel hideToggle="false" aria-expanded="true">
-                        <mat-expansion-panel-header>
-                            <mat-panel-title>
-                                Unit: Gadepan - I
-                            </mat-panel-title>
-                            <mat-panel-description>
-                                Unit: Gadepan - I
-                            </mat-panel-description>
-                        </mat-expansion-panel-header>
-                        <table class="table table-responsive">
-                            <thead>
-                                <tr>
-                                    <th>N2</th>
-                                    <th>CH4</th>
-                                    <th>C2H6</th>
-                                    <th>CO2</th>
-                                    <th>C3H8</th>
-                                    <th>NC4H10</th>
-                                    <th>IC4H10</th>
-                                    <th>Molecular</th>
-                                    <th>Netcv</th>
-                                    <th>GrossCV</th>
-                                    <th>ZnoBed</th>
-                                    <th>H2S</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td> </td>
-                                    <td> <input type="number" style="width:50px" [(ngModel)]="DBData.CH4"> </td>
-                                    <td> <input type="number" style="width:50px" [(ngModel)]="DBData.C2H6"> </td>
-                                    <td> <input type="number" style="width:50px" [(ngModel)]="DBData.CO2"> </td>
-                                    <td> <input type="number" style="width:50px" [(ngModel)]="DBData.C3H8"> </td>
-                                    <td> <input type="number" style="width:50px" [(ngModel)]="DBData.NC4H10"> </td>
-                                    <td> <input type="number" style="width:50px" [(ngModel)]="DBData.IC4H10"> </td>
-                                    <td> <input type="number" style="width:50px" [(ngModel)]="DBData.Molecular"> </td>
-                                    <td> <input type="number" style="width:50px" [(ngModel)]="DBData.Netcv"> </td>
-                                    <td> <input type="number" style="width:50px" [(ngModel)]="DBData.GrossCV"> </td>
-                                    <td> <input type="number" style="width:50px" [(ngModel)]="DBData.ZnoBed"> </td>
-                                    <td> <input type="number" style="width:50px" [(ngModel)]="DBData.H2S"> </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </mat-expansion-panel>
-                </mat-accordion>
-            </fieldset>
-            <mat-divider></mat-divider>
-            <button type="submit" class="btn btn-primary" (click)="onSubmit()">
-                <mat-icon>save</mat-icon> SAVE
-            </button>
-        </div>
-    </div>
-</section> -->

@@ -1,0 +1,14 @@
+label {
+    font-size: 12px !important;
+    font-weight: 400 !important;
+    margin-bottom: 0px !important;
+    margin-top: 6px !important;
+}
+.row{
+    text-align: right;
+}
+hr {
+    border-top: 1px solid #33333378 !important;
+    margin-top: 5px !important;
+    margin-bottom: 5px !important;
+}

@@ -1,0 +1,121 @@
+<!-- navbar.component.html -->
+
+<!-- Page Loader -->
+<!-- <div class="page-loader-wrapper">
+    <div class="loader">
+        <div class="preloader">
+            <div class="spinner-layer pl-blue">
+                <div class="circle-clipper left">
+                    <div class="circle"></div>
+                </div>
+                <div class="circle-clipper right">
+                    <div class="circle"></div>
+                </div>
+            </div>
+        </div>
+        <p>Please wait...</p>
+    </div>
+</div> -->
+<!-- <div class="overlay"></div> -->
+<!-- #END# Search Bar -->
+
+<!-- Top Bar-->
+<nav class="navbar">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a href="javascript:void(0);" class="navbar-toggle collapsed" data-toggle="collapse"
+                data-target="#navbar-collapse" aria-expanded="true"></a>
+            <div class="float-left">
+                <a href="#" data-activates="slide-out" class="button-collapse"><i class="fas fa-bars"></i><span
+                        class="sr-only" aria-hidden="true">Toggle side navigation</span></a>
+            </div>
+            <a class="bars" style="display: block !important;  color: white;"></a>
+            <a class="bars" style="display: none !important;  color: white;"></a>
+            <a class="navbar-brand" routerLink="/home" style="font-size: 14px !important;"> &nbsp;
+                &nbsp; Chambal Fertilisers and Chemicals Limited
+            </a>
+        </div>
+        <div class="collapse navbar-collapse" id="navbar-collapse">
+            <ul class="nav navbar-nav navbar-right" tabindex="-1">
+
+                <li><a mat-button href="javascript:void(0);" *ngIf="userDetails">{{userDetails.FullName}}</a></li>
+
+                <li><a mat-button href="javascript:void(0);" [matMenuTriggerFor]="menu"><i
+                            class="material-icons">more_vert</i></a></li>
+
+                <li>
+                    <mat-menu #menu="matMenu">
+                        <button mat-menu-item routerLink="/profile">
+                            <mat-icon>person</mat-icon>
+                            <span>Profile</span>
+                        </button>
+                        <button mat-menu-item (click)="onLogout();">
+                            <mat-icon>input</mat-icon>
+                            <span>Sign Out</span>
+                        </button>
+                    </mat-menu>
+                </li>
+
+            </ul>
+        </div>
+    </div>
+</nav>
+<!-- #Top Bar 2-->
+<nav class="newnavbar">
+    <div class="container-fluid">
+        <div class="collapse navbar-collapse" id="navbar-collapse">
+
+            <button mat-button routerLink="/home" routerLinkActive="active-link"><i class="material-icons">home</i>
+                Home</button>
+            <!-- <button mat-button [matMenuTriggerFor]="admin"><i class="material-icons">security</i> Administrator<i class="material-icons">keyboard_arrow_down</i></button> -->
+            <button mat-button [matMenuTriggerFor]="DDS"><i class="material-icons">keyboard</i> Daily Data Screen<i
+                    class="material-icons">arrow_drop_down</i></button>
+            <button mat-button [matMenuTriggerFor]="reports"><i class="material-icons">print</i> Reports<i
+                    class="material-icons">arrow_drop_down</i></button>
+
+            <mat-menu #admin="matMenu">
+                <button mat-menu-item routerLink="/registration" routerLinkActive="active-link">User Master</button>
+                <button mat-menu-item routerLink="/registration" routerLinkActive="active-link">User Access
+                    Module</button>
+            </mat-menu>
+
+            <mat-menu #DDS="matMenu">
+                <button mat-menu-item routerLink="/lab" routerLinkActive="active-link">Lab Analytics</button>
+                <button mat-menu-item [matMenuTriggerFor]="ammonia">Ammonia</button>
+                <button mat-menu-item [matMenuTriggerFor]="urea">Urea</button>
+                <button mat-menu-item [matMenuTriggerFor]="onu">Offsite & Utilities</button>
+                <button mat-menu-item [matMenuTriggerFor]="electrical">Electrical</button>
+            </mat-menu>
+
+            <mat-menu #ammonia="matMenu">
+                <button mat-menu-item routerLink="/ammonia1" routerLinkActive="active-link">Ammonia - 1</button>
+                <button mat-menu-item routerLink="/ammonia2" routerLinkActive="active-link">Ammonia - 2</button>
+                <button mat-menu-item routerLink="/ammonia3" routerLinkActive="active-link">Ammonia - 3</button>
+            </mat-menu>
+
+            <mat-menu #urea="matMenu">
+                <button mat-menu-item routerLink="/urea1" routerLinkActive="active-link">Urea - 1</button>
+                <button mat-menu-item routerLink="/urea2" routerLinkActive="active-link">Urea - 2</button>
+                <button mat-menu-item routerLink="/urea3" routerLinkActive="active-link">Urea - 3</button>
+            </mat-menu>
+
+            <mat-menu #onu="matMenu">
+                <button mat-menu-item routerLink="/onu1" routerLinkActive="active-link">Offsite & Utilities - 1</button>
+                <button mat-menu-item routerLink="/onu2" routerLinkActive="active-link">Offsite & Utilities - 2</button>
+                <button mat-menu-item routerLink="/onu3" routerLinkActive="active-link">Offsite & Utilities - 3</button>
+            </mat-menu>
+
+            <mat-menu #electrical="matMenu">
+                <button mat-menu-item routerLink="/electrical12" routerLinkActive="active-link">Electrical - 1 &
+                    2</button>
+                <button mat-menu-item routerLink="/electrical3" routerLinkActive="active-link">Electrical - 3</button>
+            </mat-menu>
+
+            <mat-menu #reports="matMenu">
+                <button mat-menu-item routerLink="/report" routerLinkActive="active-link">Report</button>
+            </mat-menu>
+
+        </div>
+    </div>
+</nav>
+<!-- #Top Bar -->

@@ -1,73 +1,88 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { LabService } from '../../shared/services/lab.service';
 import { LabModel } from '../../shared/models/lab';
-import { UserService } from 'src/app/shared/services/user.service';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-lab',
-  templateUrl: './Lab.component.html'
+  templateUrl: './Lab.component.html',
+  styleUrls: ['./Lab.component.css'],
+  providers: [DatePipe]
 })
-export class LabComponent implements OnInit {
+export class LabComponent {
   /*
    * Initializes variable of a class
    */
   PageTitle = 'Lab Analysis';
-  apiControllerName = 'Lab';
-  unit = 'GP-I';
   DBData = new LabModel();
-  now: Date;
-  userDetails: any;
+  LiveDateTime: Date;
+  currentDate: any;
+  dateCount = 1;
+  monthCount = 1;
 
   /*
    * Initializes objects of a class
    */
-  constructor(private service: LabService, private userservice: UserService) {
+  constructor(private service: LabService, private datePipe: DatePipe) {
     setInterval(() => {
-      this.now = new Date();
+      this.LiveDateTime = new Date();
+      this.currentDate = new Date();
     }, 1);
-  }
-
-  ngOnInit(): void {
-    this.userservice.getUserProfile().subscribe(response => {
-        this.userDetails = response;
-      }, error => {
-        console.error(error);
-      }
-    );
-    this.onPreDate();
   }
 
   /*
    * Get Data From DB File Data in Reactive Form Fields
    */
-  onBlur(TDATE: any) {
-    this.service.getData(this.apiControllerName,this.unit, TDATE).subscribe(response => {
-        this.DBData = response;
-        console.warn('Data Get...');
-      }, error => {
-        console.error(error);
-      }
-    );
-  }
-
-  onPreDate() {
-    this.now.setDate(this.now.getDate() - 2);
-    // console.log(this.now.toString());
-  }
-  onNextDate() {
-    this.now.setDate(this.now.getDate() + 1);
+  getData(DATE: any) {
+    this.service.get(DATE).subscribe(response => {
+      this.DBData = response;
+    }, error => {
+      console.error(error);
+    });
   }
 
   /*
    * Data Save and Update by Service File
    */
   onSubmit() {
-    this.service.saveData(this.apiControllerName, this.DBData).subscribe(response => {
-        console.warn('Data Saved Successfully...');
-      }, error => {
-        console.log(error);
-      }
-    );
+    this.service.post(this.DBData).subscribe(response => {
+      console.warn('code: 200 Ok');
+    }, error => {
+      console.error('error : ' + error);
+    });
   }
-  
+
+  previousDate() {
+    this.currentDate = new Date();
+    this.currentDate.setDate(this.currentDate.getDate() - this.dateCount);
+    this.currentDate = this.datePipe.transform(this.currentDate, 'dd-MM-yyyy');
+    console.log(this.currentDate);
+    this.dateCount++;
+  }
+
+  // Previous Month
+  previousMonth() {
+    this.currentDate = new Date();
+    this.currentDate.setMonth(this.currentDate.getMonth() - this.monthCount);
+    this.currentDate = this.datePipe.transform(this.currentDate, 'dd-MM-yyyy');
+    console.log(this.currentDate);
+    this.monthCount++;
+  }
+
+  nextDate() {
+    this.currentDate = new Date();
+    this.currentDate.setDate(this.currentDate.getDate() + this.dateCount);
+    this.currentDate = this.datePipe.transform(this.currentDate, 'dd-MM-yyyy');
+    console.log(this.currentDate);
+    this.dateCount++;
+  }
+
+  // Next Month
+  nextMonth() {
+    this.currentDate = new Date();
+    this.currentDate.setMonth(this.currentDate.getMonth() + this.monthCount);
+    this.currentDate = this.datePipe.transform(this.currentDate, 'dd-MM-yyyy');
+    console.log(this.currentDate);
+    this.monthCount++;
+  }
 }

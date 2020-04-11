@@ -9,18 +9,15 @@ import { Router } from '@angular/router';
   styles: []
 })
 export class ProfileComponent implements OnInit {
-  userDetails;
-
+  userDetails: any;
   constructor(private router: Router, private service: UserService) { }
 
   ngOnInit() {
-    this.service.getUserProfile().subscribe(
-      res => {
-        this.userDetails = res;
+    this.service.getUserProfile().subscribe(response => {
+        this.userDetails = response;
+      }, error => {
+        console.log(error);
       },
-      err => {
-        console.log(err);
-      }
     );
   }
 }

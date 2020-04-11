@@ -1,6 +1,6 @@
 import { DecimalPipe } from '@angular/common';
 
-export class Electrical12 {
+export class Electrical12Model {
 
     TDATE: Date;
 

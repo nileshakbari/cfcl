@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Ammonia1 } from '../models/ammonia1';
-import { Observable} from 'rxjs';
+import { Observable, of} from 'rxjs';
 import { environment } from 'src/environments/environment';
+import { map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -20,6 +21,7 @@ export class Ammonia1Service {
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   };
+  DBData: any;
 
   /*
   * Initializes objects of a class
@@ -40,14 +42,24 @@ export class Ammonia1Service {
   /*
   * GET Ammonia1 Single Record by Transaction Date (TDATE). Will throw exception 404(Record Not Found) when TDATE not found
   */
-  getData(TDATE): Observable<Ammonia1> {
-    return this.http.get<Ammonia1>(`${this.APILINK}/${TDATE}`);
+  // getData(TDATE): Observable<Ammonia1> {
+  //   return this.http.get<Ammonia1>(`${this.APILINK}/${TDATE}`);
+  // }
+  getData(TDATE) {
+    if (this.DBData) {
+      return of(this.DBData);
+    } else {
+    return this.http.get(`${this.APILINK}/${TDATE}`)
+      .pipe(map((response) => {
+        this.DBData = response;
+      }));
+    }
   }
 
   /*
   * POST: Save or Update Record
   */
-  saveData(Data: Ammonia1): Observable<Ammonia1> {
-    return this.http.post<Ammonia1>(this.APILINK, Data, this.httpOptions);
-  }
+  // saveData(Data: Ammonia1): Observable<Ammonia1> {
+  //   return this.http.post<Ammonia1>(this.APILINK, Data, this.httpOptions);
+  // }
 }

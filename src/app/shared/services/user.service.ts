@@ -2,18 +2,22 @@ import { Injectable } from '@angular/core';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
+import { of } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
 
+  userDetails: any;
+
   constructor(private fb: FormBuilder, private http: HttpClient) { }
   readonly BaseURI = environment.appUrl;
 
   formModel = this.fb.group({
     UserName: ['', Validators.required],
-    Email: ['', Validators.email],
+    Email: [''],
     FullName: [''],
     Passwords: this.fb.group({
       Password: ['', [Validators.required, Validators.minLength(4)]],
@@ -53,24 +57,30 @@ export class UserService {
   }
 
   getUserProfile() {
-    return this.http.get(this.BaseURI + '/UserProfile');
+    if (this.userDetails) {
+      return of(this.userDetails);
+    } else {
+      return this.http.get(this.BaseURI + '/UserProfile').pipe(map((response) => {
+        this.userDetails = response;
+      }));
+    }
   }
 
-  getMenu() {
-    return this.http.get(this.BaseURI + '/Menu');
-  }
+  // getMenu() {
+  //   return this.http.get(this.BaseURI + '/Menu');
+  // }
 
-  roleMatch(allowedRoles): boolean {
-    let isMatch = false;
-    const payLoad = JSON.parse(window.atob(localStorage.getItem('token').split('.')[1]));
-    const userRole = payLoad.role;
-    allowedRoles.forEach(element => {
-      // tslint:disable-next-line: triple-equals
-      if (userRole == element) {
-        isMatch = true;
-        return true;
-      }
-    });
-    return isMatch;
-  }
+  // roleMatch(allowedRoles): boolean {
+  //   let isMatch = false;
+  //   const payLoad = JSON.parse(window.atob(sessionStorage.getItem('token').split('.')[1]));
+  //   const userRole = payLoad.role;
+  //   allowedRoles.forEach(element => {
+  //     // tslint:disable-next-line: triple-equals
+  //     if (userRole == element) {
+  //       isMatch = true;
+  //       return true;
+  //     }
+  //   });
+  //   return isMatch;
+  // }
 }
