@@ -51,6 +51,7 @@ import { Ammonia3Service } from './shared/services/ammonia3.service';
 
 // Project All Component Imports for Reports and Ledger
 import { ReportComponent } from './reports/Report/report.component';
+import { TestComponent } from './test/test.component';
 
 @NgModule({
   declarations: [
@@ -70,7 +71,8 @@ import { ReportComponent } from './reports/Report/report.component';
     Ammonia1Component,
     Ammonia2Component,
     Ammonia3Component,
-    ReportComponent
+    ReportComponent,
+    TestComponent
   ],
   providers: [
     UserService,

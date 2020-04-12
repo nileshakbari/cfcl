@@ -1,0 +1,12 @@
+<p>test works!</p>
+<input value={{currentdate1}}>
+<input [ngModel]="currentdate1" (ngModelChange)="currentdate1 = $event">
+
+{{currentdate1}}
+{{currentdate1 | json}}
+<button class="headerButton" title="PRVvious Day" mat-stroked-button (click)="previousDate()" tabindex="-1">
+    <mat-icon>keyboard_arrow_left</mat-icon>
+  </button>
+
+
+  <input [(ngModel)] ="myMsg"/>

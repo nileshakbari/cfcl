@@ -4,35 +4,91 @@
       <div class="col-sm-2 col-xs-6 pull-left">
         <div class="form-group pull-right">
           <div class="form-line">
-             <input value="{{currentDate | date: 'dd-MM-yyyy'}}" class="form-control"
-              placeholder="Ex: 01-01-2020" #selectedDATE>
+            <input
+              [(ngModel)]="currentDate"
+              class="form-control"
+              placeholder="Ex: 01-01-2020"
+              #selectedDATE
+            />
+
+            <mat-form-field>
+              <mat-label>Choose a date</mat-label>
+              <input matInput  [matDatepicker]="picker" [value]="currentDate1"
+              (dateChange)="addEvent('change', $event)" [max]="maxDate" />
+              <mat-datepicker-toggle
+                matSuffix
+                [for]="picker"
+              ></mat-datepicker-toggle>
+              <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
           </div>
         </div>
       </div>
       <div class="col-sm-1 col-xs-6 pull-left">
-        <button class="headerButton" mat-stroked-button (click)="getData(selectedDATE.value)" tabindex="-1">
+        <button
+          class="headerButton"
+          mat-stroked-button
+          (click)="getData(selectedDATE.value)"
+          tabindex="-1"
+        >
           Get Data
         </button>
       </div>
       <div class="col-sm-9 col-xs-12 pull-right">
-        <button class="headerButton" title="PRVvious Month" mat-stroked-button (click)="previousMonth()" tabindex="-1">
+        <button
+          class="headerButton"
+          title="PRVvious Month"
+          mat-stroked-button
+          (click)="previousMonth()"
+          tabindex="-1"
+        >
           <mat-icon>first_page</mat-icon>
         </button>
-        <button class="headerButton" title="PRVvious Day" mat-stroked-button (click)="previousDate()" tabindex="-1">
+        <button
+          class="headerButton"
+          title="PRVvious Day"
+          mat-stroked-button
+          (click)="previousDate()"
+          tabindex="-1"
+        >
           <mat-icon>keyboard_arrow_left</mat-icon>
         </button>
-        <button class="headerButton" title="Next Day" mat-stroked-button (click)="nextDate()" tabindex="-1">
+        <button
+          class="headerButton"
+          title="Next Day"
+          mat-stroked-button
+          (click)="nextDate()"
+          tabindex="-1"
+        >
           <mat-icon>keyboard_arrow_right</mat-icon>
         </button>
-        <button class="headerButton" title="Next Month" mat-stroked-button (click)="nextMonth()" tabindex="-1">
+        <button
+          class="headerButton"
+          title="Next Month"
+          mat-stroked-button
+          (click)="nextMonth()"
+          tabindex="-1"
+        >
           <mat-icon>last_page</mat-icon>
         </button>
-        <button class="headerButton" title="Data Save" style="color:green;" mat-stroked-button (click)="onSubmit()"
-          tabindex="-1">
+        <button
+          class="headerButton"
+          title="Data Save"
+          style="color: green;"
+          mat-stroked-button
+          (click)="onSubmit()"
+          tabindex="-1"
+        >
           <mat-icon>save</mat-icon>
         </button>
-        <button class="headerButton" title="Close" style="color:red;" mat-stroked-button [routerLink]="['/home']"
-          tabindex="-1">
+        <button
+          class="headerButton"
+          title="Close"
+          style="color: red;"
+          mat-stroked-button
+          [routerLink]="['/home']"
+          tabindex="-1"
+        >
           <mat-icon>close</mat-icon>
         </button>
       </div>
@@ -46,8 +102,12 @@
               <div class="form-group">
                 <div class="form-line">
                   <label>N2</label>
-                  <input type="number" (focusin)="PRValue=DBData.PRV_GP1_L_N2" class="form-control"
-                    [(ngModel)]="DBData.GP1_L_N2">
+                  <input
+                    type="number"
+                    (focusin)="PRValue = DBData.PRV_GP1_L_N2"
+                    class="form-control"
+                    [(ngModel)]="DBData.GP1_L_N2"
+                  />
                 </div>
               </div>
             </div>
@@ -55,8 +115,12 @@
               <div class="form-group">
                 <div class="form-line">
                   <label>CH4</label>
-                  <input type="number" (focusin)="PRValue=DBData.PRV_GP1_L_CH4" class="form-control"
-                    [(ngModel)]="DBData.GP1_L_CH4">
+                  <input
+                    type="number"
+                    (focusin)="PRValue = DBData.PRV_GP1_L_CH4"
+                    class="form-control"
+                    [(ngModel)]="DBData.GP1_L_CH4"
+                  />
                 </div>
               </div>
             </div>
@@ -64,8 +128,12 @@
               <div class="form-group">
                 <div class="form-line">
                   <label>C2H6</label>
-                  <input type="number" (focusin)="PRValue=DBData.PRV_GP1_L_C2H6" class="form-control"
-                    [(ngModel)]="DBData.GP1_L_C2H6">
+                  <input
+                    type="number"
+                    (focusin)="PRValue = DBData.PRV_GP1_L_C2H6"
+                    class="form-control"
+                    [(ngModel)]="DBData.GP1_L_C2H6"
+                  />
                 </div>
               </div>
             </div>
@@ -73,8 +141,12 @@
               <div class="form-group">
                 <div class="form-line">
                   <label>CO2</label>
-                  <input type="number" (focusin)="PRValue=DBData.PRV_GP1_L_CO2" class="form-control"
-                    [(ngModel)]="DBData.GP1_L_CO2">
+                  <input
+                    type="number"
+                    (focusin)="PRValue = DBData.PRV_GP1_L_CO2"
+                    class="form-control"
+                    [(ngModel)]="DBData.GP1_L_CO2"
+                  />
                 </div>
               </div>
             </div>
@@ -82,8 +154,12 @@
               <div class="form-group">
                 <div class="form-line">
                   <label>C3H8</label>
-                  <input type="number" (focusin)="PRValue=DBData.PRV_GP1_L_C3H8" class="form-control"
-                    [(ngModel)]="DBData.GP1_L_C3H8">
+                  <input
+                    type="number"
+                    (focusin)="PRValue = DBData.PRV_GP1_L_C3H8"
+                    class="form-control"
+                    [(ngModel)]="DBData.GP1_L_C3H8"
+                  />
                 </div>
               </div>
             </div>
@@ -91,8 +167,12 @@
               <div class="form-group">
                 <div class="form-line">
                   <label>NC4H10</label>
-                  <input type="number" (focusin)="PRValue=DBData.PRV_GP1_L_NC4H10" class="form-control"
-                    [(ngModel)]="DBData.GP1_L_NC4H10">
+                  <input
+                    type="number"
+                    (focusin)="PRValue = DBData.PRV_GP1_L_NC4H10"
+                    class="form-control"
+                    [(ngModel)]="DBData.GP1_L_NC4H10"
+                  />
                 </div>
               </div>
             </div>
@@ -100,8 +180,12 @@
               <div class="form-group">
                 <div class="form-line">
                   <label>IC4H10</label>
-                  <input type="number" (focusin)="PRValue=DBData.PRV_GP1_L_IC4H10" class="form-control"
-                    [(ngModel)]="DBData.GP1_L_IC4H10">
+                  <input
+                    type="number"
+                    (focusin)="PRValue = DBData.PRV_GP1_L_IC4H10"
+                    class="form-control"
+                    [(ngModel)]="DBData.GP1_L_IC4H10"
+                  />
                 </div>
               </div>
             </div>
@@ -109,8 +193,12 @@
               <div class="form-group">
                 <div class="form-line">
                   <label>MOLECULAR</label>
-                  <input type="number" (focusin)="PRValue=DBData.PRV_GP1_L_MOL_WT" class="form-control"
-                    [(ngModel)]="DBData.GP1_L_MOL_WT">
+                  <input
+                    type="number"
+                    (focusin)="PRValue = DBData.PRV_GP1_L_MOL_WT"
+                    class="form-control"
+                    [(ngModel)]="DBData.GP1_L_MOL_WT"
+                  />
                 </div>
               </div>
             </div>
@@ -118,8 +206,12 @@
               <div class="form-group">
                 <div class="form-line">
                   <label>NET_CV</label>
-                  <input type="number" (focusin)="PRValue=DBData.PRV_GP1_L_NG_NET_CV" class="form-control"
-                    [(ngModel)]="DBData.GP1_L_NG_NET_CV">
+                  <input
+                    type="number"
+                    (focusin)="PRValue = DBData.PRV_GP1_L_NG_NET_CV"
+                    class="form-control"
+                    [(ngModel)]="DBData.GP1_L_NG_NET_CV"
+                  />
                 </div>
               </div>
             </div>
@@ -127,8 +219,12 @@
               <div class="form-group">
                 <div class="form-line">
                   <label>GROSS_CV</label>
-                  <input type="number" (focusin)="PRValue=DBData.PRV_GP1_L_NG_GROSS_CV" class="form-control"
-                    [(ngModel)]="DBData.GP1_L_NG_GROSS_CV">
+                  <input
+                    type="number"
+                    (focusin)="PRValue = DBData.PRV_GP1_L_NG_GROSS_CV"
+                    class="form-control"
+                    [(ngModel)]="DBData.GP1_L_NG_GROSS_CV"
+                  />
                 </div>
               </div>
             </div>
@@ -136,8 +232,12 @@
               <div class="form-group">
                 <div class="form-line">
                   <label>ZNO_BED</label>
-                  <input type="number" (focusin)="PRValue=DBData.PRV_GP1_L_ZNO_BED" class="form-control"
-                    [(ngModel)]="DBData.GP1_L_ZNO_BED">
+                  <input
+                    type="number"
+                    (focusin)="PRValue = DBData.PRV_GP1_L_ZNO_BED"
+                    class="form-control"
+                    [(ngModel)]="DBData.GP1_L_ZNO_BED"
+                  />
                 </div>
               </div>
             </div>
@@ -145,8 +245,12 @@
               <div class="form-group">
                 <div class="form-line">
                   <label>H2S</label>
-                  <input type="number" (focusin)="PRValue=DBData.PRV_GP1_L_H2S" class="form-control"
-                    [(ngModel)]="DBData.GP1_L_H2S">
+                  <input
+                    type="number"
+                    (focusin)="PRValue = DBData.PRV_GP1_L_H2S"
+                    class="form-control"
+                    [(ngModel)]="DBData.GP1_L_H2S"
+                  />
                 </div>
               </div>
             </div>
@@ -159,24 +263,24 @@
 </section>
 <footer class="footer" style="text-align: center;">
   <div class="col-sm-2 col-xs-6">
-    <h6 *ngIf="userDetails">{{userDetails.UserName}} | </h6>
+    <h6 *ngIf="userDetails">{{ userDetails.UserName }} |</h6>
   </div>
   <div class="col-sm-2 col-xs-6">
-    <input type="hidden" [(ngModel)]="DBData.GP1_L_USER_ID">
-    <h6>{{DBData.GP1_L_USER_ID}} | </h6>
+    <input type="hidden" [(ngModel)]="DBData.GP1_L_USER_ID" />
+    <h6>{{ DBData.GP1_L_USER_ID }} |</h6>
   </div>
   <div class="col-sm-2 col-xs-6">
-    <input type="hidden" [(ngModel)]="DBData.GP1_L_DATE_MOD">
-    <h6>{{DBData.GP1_L_DATE_MOD}} | </h6>
+    <input type="hidden" [(ngModel)]="DBData.GP1_L_DATE_MOD" />
+    <h6>{{ DBData.GP1_L_DATE_MOD }} |</h6>
   </div>
   <div class="col-sm-2 col-xs-6">
-    <h6>{{PRValue}} | </h6>
+    <h6>{{ PRValue }} |</h6>
   </div>
   <div class="col-sm-2 col-xs-6">
-    <h6>{{PageTitle}} | </h6>
+    <h6>{{ PageTitle }} |</h6>
   </div>
   <div class="col-sm-2 col-xs-6">
-    <h6>{{LiveDateTime | date:'dd-MM-yyyy hh:mm:ss a'}}</h6>
+    <h6>{{ LiveDateTime | date: "dd-MM-yyyy hh:mm:ss a" }}</h6>
   </div>
 </footer>
 

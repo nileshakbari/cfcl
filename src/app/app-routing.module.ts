@@ -27,6 +27,7 @@ import { Ammonia3Component } from './daily_data_screen/ammonia/ammonia3/ammonia3
 
 // Project All Component Imports for Reports and Ledger
 import { ReportComponent } from './reports/Report/report.component';
+import { TestComponent } from './test/test.component';
 
 // Project Routes
 const routes: Routes = [
@@ -38,6 +39,7 @@ const routes: Routes = [
     ]
   },
   { path: 'forbidden', component: ForbiddenComponent },
+  { path: 'test', component: TestComponent },
   {
     path: '', component: MainLayoutComponent,
     children: [

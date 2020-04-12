@@ -6,6 +6,7 @@ import { retry, catchError } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 import { of } from 'rxjs';
 import { map } from 'rxjs/operators';
+import * as moment from 'moment';
 
 @Injectable({
   providedIn: 'root',
@@ -36,8 +37,11 @@ export class LabService {
    * GET Lab Single Record by Transaction Date (DATE)
    */
   get(DATE): Observable<LabModel> {
+    let test = moment(DATE).format('DD-MM-YYYY');
+    console.log(test);
+    
     return this.http
-      .get<LabModel>(`${this.BaseUrl}/${DATE}`)
+      .put<LabModel>(`${this.BaseUrl}/${'TDATE'}`, { TDATE: test })
       .pipe(retry(1), catchError(this.handleError));
   }
 
@@ -46,8 +50,8 @@ export class LabService {
    */
   post(Data: LabModel): Observable<LabModel> {
     return this.http
-    .post<LabModel>(`${this.BaseUrl}`, Data, this.httpOptions)
-    .pipe(retry(1), catchError(this.handleError));
+      .post<LabModel>(`${this.BaseUrl}`, Data, this.httpOptions)
+      .pipe(retry(1), catchError(this.handleError));
   }
 
   handleError(error) {
